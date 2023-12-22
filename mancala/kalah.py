@@ -35,12 +35,22 @@ class Kalah():
         self.game_history_list = history_list
         self.game_state_list = state_list
 
-        
-        
+
     def show_board(self):
         """
-        Print the board.  
+        Print the board.
         """
+        print(self)
+        
+        
+
+    def __repr__(self):
+        """
+        Return a string representation of the game.
+        """
+        ## Initialize the output string
+        out_string = ''
+
         ## Get the game state list
         game_state = self.state_list()    
         
@@ -67,19 +77,22 @@ class Kalah():
         else:
             north_init_str = opponent_init_str
             south_init_str = opponent_init_str        
-            
-        ## Print the board 
-        print()
-        print(north_init_str + ' '*4 + ''.join([str(x).rjust(4)  for x in range(2*self.m+1, self.m + 1, -1)]))
-        print(cradle_init_str + '-'*4*(self.m+3))
-#        print()
-        print(cradle_init_str + ' '*4 + ''.join([str(x).rjust(4)  for x in north_state_list]))
-        print(cradle_init_str + str(north_cradle).rjust(4) + ' '*4*self.m + str(south_cradle).rjust(4))
-        print(cradle_init_str + ' '*4 + ''.join([str(x).rjust(4)  for x in south_state_list]))
-#        print()
-        print(cradle_init_str + '-'*4*(self.m+3))
-        print(south_init_str + ' '*4 + ''.join([str(x).rjust(4)  for x in range(1, self.m + 1)]))
-        print()
+
+        ## Output the board view
+        out_string += "\n" 
+        out_string += north_init_str + ' '*4 + ''.join([str(x).rjust(4)  for x in range(2*self.m+1, self.m + 1, -1)]) + '\n'
+        out_string += cradle_init_str + '-'*4*(self.m+3) + '\n'
+#        out_string += "\n" 
+        out_string += cradle_init_str + ' '*4 + ''.join([str(x).rjust(4)  for x in north_state_list]) + '\n'
+        out_string += cradle_init_str + str(north_cradle).rjust(4) + ' '*4*self.m + str(south_cradle).rjust(4) + '\n'
+        out_string += cradle_init_str + ' '*4 + ''.join([str(x).rjust(4)  for x in south_state_list]) + '\n'
+#        out_string += "\n" 
+        out_string += cradle_init_str + '-'*4*(self.m+3) + '\n'
+        out_string += south_init_str + ' '*4 + ''.join([str(x).rjust(4)  for x in range(1, self.m + 1)]) + '\n'
+        out_string += "\n" 
+
+        ## Return the output string
+        return out_string
 
 
         
