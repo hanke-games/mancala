@@ -159,9 +159,14 @@ def kalah_game_iterator(candidate_game_history=[1], candidate_game_score='',
                 print("history = ", history)
 
 
-            ## Look at the last game (state) in game_list and the last move
-            last_game = game_list[-1]
-            last_move = history[-1]
+            ## Look at the last game (state) in game_list and the last move, or signal we're done
+            if len(game_list) == 0:
+                 done_flag = True
+                 break            
+            else:
+                last_game = game_list[-1]
+                last_move = history[-1]
+
 
             ## Get its list of allowed moves
             last_game_allowed_move_list = last_game.allowed_move_list()
@@ -196,8 +201,8 @@ def kalah_game_iterator(candidate_game_history=[1], candidate_game_score='',
                     game_list.pop()
                     history.pop()
                 else:
-                    done_flag = True
-
+#                    done_flag = True
+                    pass
 
 
         ## DIAGNOSTIC:
