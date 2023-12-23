@@ -64,8 +64,8 @@ def kalah_game_iterator(candidate_game_history=[1], candidate_game_score='',
     done_flag = False
     while not done_flag:
         
-        ## Get the current game
-        current_game = game_list[-1]
+        ## Get the last game
+        last_game = game_list[-1]
         
         
         ## DIAGNOSTIC
@@ -74,8 +74,8 @@ def kalah_game_iterator(candidate_game_history=[1], candidate_game_score='',
             print(f"CHECKPOINT 2:")
             print(f"len(game_list) = {len(game_list)}")
             print(f"game_list = {game_list}")
-            print(f"type(current_game) = {type(current_game)}")
-            print(f"current_game = {current_game}")
+            print(f"type(last_game) = {type(last_game)}")
+            print(f"last_game = {last_game}")
 
 
 
@@ -84,37 +84,39 @@ def kalah_game_iterator(candidate_game_history=[1], candidate_game_score='',
         ########################################################################
 
         ## Play the next game continuing from this partial game until we have a finished game
-        while not current_game.is_finished():
+        while not last_game.is_finished():
 
             ## Start the next game (one more move in from the last one)
-            next_game = deepcopy(current_game)
+            next_game = deepcopy(game_list[-1])
 
             ## Determine the next player and the next move
-            if current_game.next_player() == 's':
+            if next_game.next_player() == 's':
                 for next_move in range(1, m+1):
                     next_game.perform_move(next_move)                
-                    if len(next_game.history_list()) > len(current_game.history_list()):
+                    if len(next_game.history_list()) > len(last_game.history_list()):
                         break
-            elif current_game.next_player() == 'n':
+            elif next_game.next_player() == 'n':
                 for next_move in range(m+2, 2*m+2):
                     next_game.perform_move(next_move)                
-                    if len(next_game.history_list()) > len(current_game.history_list()):
+                    if len(next_game.history_list()) > len(last_game.history_list()):
                         break
 
             ## Append the next game to the list
             game_list.append(next_game)
 
+
             ## Update the current game
-            current_game = game_list[-1]
+            last_game = game_list[-1]
+
 
             ## DIAGNOSTIC
 #            if True:
             if SHOW_DIAGNOSTIC:
                 print(f"CHECKPOINT 3:")
                 print(f"len(game_list) = {len(game_list)}")
-                print(f"len(current_game.state_list()) = {current_game.state_list()}")
-                print(f"len(current_game.history_list()) = {current_game.history_list()}")
-                print(f"len(current_game.next_player()) = {current_game.next_player()}")
+                print(f"len(last_game.state_list()) = {last_game.state_list()}")
+                print(f"len(last_game.history_list()) = {last_game.history_list()}")
+                print(f"len(last_game.next_player()) = {last_game.next_player()}")
                 
 
                 
@@ -122,10 +124,10 @@ def kalah_game_iterator(candidate_game_history=[1], candidate_game_score='',
         ## 2. Yield the result ##
         #########################
                 
-        ## Return the finished game and its score 
-        history = current_game.history_list()
-        score = current_game.score()
-        yield history, score        
+        ## Return the finished game and its score -- HERE THE DEEPCOPY IS IMPORTANT!
+        history = game_list[-1].history_list()
+        score = game_list[-1].score()
+        yield deepcopy(history), deepcopy(score)
 
     
         
