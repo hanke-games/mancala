@@ -2,8 +2,8 @@
 from .kalah import Kalah
 
 
-def play_mancala():
-    return play_kalah(m=6, n=4)
+def play_mancala(initial_move_list=[]):
+    return play_kalah(m=6, n=4, initial_move_list=initial_move_list)
 
 
 ## Define a sample mancala game (i.e. list of moves / history)

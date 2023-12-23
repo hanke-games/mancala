@@ -7,11 +7,14 @@ class Kalah():
     Here, by convention, the South player ("S") always goes first.
     """
 
-    def __init__(self, m, n):
+    def __init__(self, m, n, initial_move_list=[]):
         """
         Initialize the Kalah game with m holes on each side, and n stones in each.  
     
         Here, by convention, the South player ("S") always goes first.
+
+        NOTE: All moves in the initial move list are applied to the game state in order, 
+        but only valid moves will be executed.  (Invalid moves will be ignored.)
 
         """
         ## Store the game size
@@ -34,6 +37,12 @@ class Kalah():
         ## Store the game history and state
         self.game_history_list = history_list
         self.game_state_list = state_list
+
+
+        ## Apply each move in the initial move list
+        for move in initial_move_list:
+            self.perform_move(move)
+
 
 
     def show_board(self):
