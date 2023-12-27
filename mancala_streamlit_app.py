@@ -40,11 +40,12 @@ for i, col in enumerate(col_list[1:-1]):
 
 
 ## Get the next move
-move = st.text_input("Enter your move ('Q' to quit): ")
+move = st.text_input("Enter your move ('Q' to quit): ", value='')
 
 ## Apply the move
 try:
     st.session_state['game_board'].perform_move(int(move))
+    st.rerun()
 except:
     pass
 
