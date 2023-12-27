@@ -11,7 +11,11 @@ def attempt_new_move():
     move_num = st.session_state['move_input']
 
     ## Clear the move text
-    st.session_state['move_input'].value = None
+#    st.session_state['move_input'].value = None
+    st.session_state['move_input'] = st.number_input("Enter your move ('Q' to quit): ", 
+                                                    value=None, 
+                                                    min_value=1, max_value = 13,
+                                                    on_change=attempt_new_move)
 
     ## Apply the move
     try:
