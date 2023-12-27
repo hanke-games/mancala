@@ -13,7 +13,7 @@ st.title('Mancala')
 
 
 ## Show the game board
-print(game)
+st.write(game)
 
 ## Get the next move
 move = st.text_input("Enter your move ('Q' to quit): ")
