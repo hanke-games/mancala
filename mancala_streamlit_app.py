@@ -10,12 +10,14 @@ def attempt_new_move():
     ## Get the next move
     move_num = st.session_state['move_input']
 
+    st.session_state['move_input'] = 
+
     ## Clear the move text
 #    st.session_state['move_input'].value = None
-    st.session_state['move_input'] = st.number_input("Enter your move ('Q' to quit): ", 
-                                                    value=None, 
-                                                    min_value=1, max_value = 13,
-                                                    on_change=attempt_new_move)
+#    st.session_state['move_input'] = st.number_input("Enter your move ('Q' to quit): ", 
+#                                                    value=None, 
+#                                                    min_value=1, max_value = 13,
+#                                                    on_change=attempt_new_move)
 
     ## Apply the move
     try:
@@ -67,9 +69,11 @@ with last_col:
 
 for i, col in enumerate(col_list[1:-1]):
     with col:
+        st.button(str(14-(i+1)))
         st.write(str(st.session_state['game_board'].game_state_list[14-(i+1)]))
         st.write('')
         st.write(str(st.session_state['game_board'].game_state_list[i+1]))
+        st.button(str(i+1))
 
 
 
