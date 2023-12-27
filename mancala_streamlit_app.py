@@ -80,13 +80,13 @@ for i, col in enumerate(col_list[1:-1]):
             st.rerun()
 
         ## Write the north and south player stone counts
-        with st.container():
+        with st.container(border=True):
             st.write('  ' + str(st.session_state['game_board'].game_state_list[north_index]))
         st.write('')
         st.write('')
         st.write('')
-        with st.container():
-            st.write('  ' + str(st.session_state['game_board'].game_state_list[south_index]))
+        with st.container(border=True):
+            st.write(str(st.session_state['game_board'].game_state_list[south_index]).center(7))
 
         ## Set up the south player move buttons
         if st.button(str(south_index)):
