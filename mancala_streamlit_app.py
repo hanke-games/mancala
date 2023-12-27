@@ -50,7 +50,7 @@ st.markdown("""
 }
 
 .selected-player {
-    border: 2px blue;
+    border: 20px blue;
 }
 </style>
 """, unsafe_allow_html=True)
