@@ -13,7 +13,7 @@ game = Kalah(m=6, n=4)
 st.title('Mancala')
 
 ## Show the game board
-st.write(game)
+st.write(game.__repr__())
 
 
 
