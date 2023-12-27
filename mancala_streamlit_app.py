@@ -17,6 +17,24 @@ st.title('Mancala')
 st.write(st.session_state['game_board'].__repr__())
 
 
+## Add a cleaner board display
+    col_list = st.columns(8)
+    first_col = col_list[0]
+    last_col = col_list[-1]
+
+    with first_col:
+        st.write('First')
+
+    with last_col:
+        st.write('Last')
+
+    for i, col in enumerate(col_list[1, -1]):
+        with col:
+            st.write('A')
+            st.write('')
+            st.write('B')
+
+
 ## Get the next move
 move = st.text_input("Enter your move ('Q' to quit): ")
 
