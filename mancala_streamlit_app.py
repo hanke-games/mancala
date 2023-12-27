@@ -132,7 +132,7 @@ with first_col:
     st.write('')
     st.write('')
     st.write('')
-    if True:
+    if st.session_state['game_board'].current_player_str == 'n':
         with st.container(border=True):
             with st.container(border=True):
                 st.write('North Player Cradle')
@@ -142,8 +142,6 @@ with first_col:
             st.write('North Player Cradle')
             st.write('  ' + big_font_prefix + str(st.session_state['game_board'].game_state_list[0]) + big_font_suffix, unsafe_allow_html=True)
 
-
-
 with last_col:
     st.write('')
     st.write('')
@@ -151,10 +149,18 @@ with last_col:
     st.write('')
     st.write('')
     st.write('<div class="selected-player">', unsafe_allow_html=True)
-    with st.container(border=True):
-        st.write('South Player Cradle')
-        st.write('  ' + big_font_prefix + str(st.session_state['game_board'].game_state_list[7]) + big_font_suffix, unsafe_allow_html=True)
-    st.write('</div>', unsafe_allow_html=True)
+    if st.session_state['game_board'].current_player_str == 's':
+        with st.container(border=True):
+            with st.container(border=True):
+                st.write('South Player Cradle')
+                st.write('  ' + big_font_prefix + str(st.session_state['game_board'].game_state_list[7]) + big_font_suffix, unsafe_allow_html=True)
+            st.write('</div>', unsafe_allow_html=True)
+    else:
+        with st.container(border=True):
+            st.write('South Player Cradle')
+            st.write('  ' + big_font_prefix + str(st.session_state['game_board'].game_state_list[7]) + big_font_suffix, unsafe_allow_html=True)
+        st.write('</div>', unsafe_allow_html=True)
+
 
 for i, col in enumerate(col_list[1:-1]):
     with col:
