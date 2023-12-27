@@ -69,15 +69,27 @@ with last_col:
 
 for i, col in enumerate(col_list[1:-1]):
     with col:
-        st.button(str(14-(i+1)))
-        st.write(str(st.session_state['game_board'].game_state_list[14-(i+1)]))
+        ## Define the associated index for each player
+        north_index = 14-(i+1)
+        south_index = (i+1)
+
+        ## Setup the north player move buttons
+        if st.button(str(north_index)):
+            st.session_state['game_board'].perform_move(north_index)
+#            st.session_state['move_input'] = north_index
+            st.rerun()
+
+        ## Write the north and south player stone counts
+        st.write(str(st.session_state['game_board'].game_state_list[north_index]))
         st.write('')
         st.write('')
         st.write('')
-        st.write(str(st.session_state['game_board'].game_state_list[i+1]))
-        if st.button(str(i+1)):
-            st.session_state['game_board'].perform_move(i+1)
-#            st.session_state['move_input'] = i+1
+        st.write(str(st.session_state['game_board'].game_state_list[south_index]))
+
+        ## Set up the south player move buttons
+        if st.button(str(south_index)):
+            st.session_state['game_board'].perform_move(south_index)
+#            st.session_state['move_input'] = south_index
             st.rerun()
 
 
