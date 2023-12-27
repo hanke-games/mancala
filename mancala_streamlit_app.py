@@ -33,6 +33,13 @@ st.markdown("""
         color: black;
     }
 
+    .stContainer container {
+        border: 2px blue;
+    }
+
+
+
+
 </style>
 """, unsafe_allow_html=True)
 
