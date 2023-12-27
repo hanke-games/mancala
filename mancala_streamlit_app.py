@@ -133,6 +133,8 @@ with first_col:
     st.write('')
     st.write('')
     st.write('')
+    if not is_north_player_move:
+        st.write('')
     with st.container(border=is_north_player_move):
         with st.container(border=True):
             st.write('North Player Cradle')
@@ -144,6 +146,8 @@ with last_col:
     st.write('')
     st.write('')
     st.write('<div class="selected-player">', unsafe_allow_html=True)
+    if not is_south_player_move:
+        st.write('')
     with st.container(border=is_south_player_move):
         with st.container(border=True):
             st.write('South Player Cradle')
