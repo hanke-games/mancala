@@ -60,12 +60,12 @@ last_col = col_list[-1]
 with first_col:
     st.write('')
     st.write('North Player Cradle')
-    st.write(str(st.session_state['game_board'].game_state_list[0]))
+    st.write('  ' + str(st.session_state['game_board'].game_state_list[0]))
 
 with last_col:
     st.write('')
     st.write('South Player Cradle')
-    st.write(str(st.session_state['game_board'].game_state_list[7]))
+    st.write('  ' + str(st.session_state['game_board'].game_state_list[7]))
 
 for i, col in enumerate(col_list[1:-1]):
     with col:
@@ -80,11 +80,11 @@ for i, col in enumerate(col_list[1:-1]):
             st.rerun()
 
         ## Write the north and south player stone counts
-        st.write(' ' + str(st.session_state['game_board'].game_state_list[north_index]))
+        st.write('  ' + str(st.session_state['game_board'].game_state_list[north_index]))
         st.write('')
         st.write('')
         st.write('')
-        st.write(' ' + str(st.session_state['game_board'].game_state_list[south_index]))
+        st.write('  ' + str(st.session_state['game_board'].game_state_list[south_index]))
 
         ## Set up the south player move buttons
         if st.button(str(south_index)):
