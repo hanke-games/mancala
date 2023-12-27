@@ -34,7 +34,7 @@ st.markdown("""
     }
 
     .stContainer container {
-        border: 2px blue;
+        border: 20px blue;
     }
 
 
