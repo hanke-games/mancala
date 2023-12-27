@@ -10,7 +10,7 @@ def attempt_new_move():
     ## Get the next move
     move_num = st.session_state['move_input']
 
-    st.session_state['move_input'] = 
+    st.session_state['move_input'] = None
 
     ## Clear the move text
 #    st.session_state['move_input'].value = None
