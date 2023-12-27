@@ -5,7 +5,7 @@ import numpy as np
 from mancala import *
 
 ## Define the game board instance
-game = Kalah()
+game = Kalah(m=6, n=4)
 
 
 ## Create the app title
