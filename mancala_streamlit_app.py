@@ -9,6 +9,35 @@ from mancala import *
 st.set_page_config(layout="wide")
 
 
+## Set page style settings
+st.markdown("""
+<style>
+    .stButton button {
+        background-color: white;
+        font-weight: bold;
+        width: 50px;
+        border: 2px solid green;
+    }
+
+    .stButton button:hover {
+        background-color:#018749;
+        color: black;
+    }
+
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<style>
+.big-font {
+    font-size:30px !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
+
+big_font_prefix = '<p class="big-font">' 
+big_font_suffix = '</p>'
 
 
 
@@ -71,7 +100,7 @@ with first_col:
     st.write('')
     with st.container(border=True):
         st.write('North Player Cradle')
-        st.write('  ' + str(st.session_state['game_board'].game_state_list[0]))
+        st.write('  ' + big_font_prefix + str(st.session_state['game_board'].game_state_list[0]) + big_font_suffix, unsafe_allow_html=True)
 
 with last_col:
     st.write('')
@@ -97,12 +126,12 @@ for i, col in enumerate(col_list[1:-1]):
 
         ## Write the north and south player stone counts
         with st.container(border=True):
-            st.write('  ' + str(st.session_state['game_board'].game_state_list[north_index]))
+            st.write('  ' + big_font_prefix + str(st.session_state['game_board'].game_state_list[north_index]) + big_font_suffix, unsafe_allow_html=True)
         st.write('')
         st.write('')
         st.write('')
         with st.container(border=True):
-            st.write(str(st.session_state['game_board'].game_state_list[south_index]).center(4))
+            st.write('  ' + big_font_prefix + str(st.session_state['game_board'].game_state_list[south_index]).center(4) + big_font_suffix, unsafe_allow_html=True)
 
         ## Set up the south player move buttons
         if st.button(str(south_index)):
