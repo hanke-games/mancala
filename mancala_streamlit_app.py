@@ -125,19 +125,15 @@ st.title('Mancala')
 col_list = st.columns(8)
 first_col = col_list[0]
 last_col = col_list[-1]
+is_north_player_move = st.session_state['game_board'].next_player() == 'n'
+is_south_player_move = st.session_state['game_board'].next_player() == 's'
 
 with first_col:
     st.write('')
     st.write('')
     st.write('')
     st.write('')
-    st.write('')
-    if st.session_state['game_board'].next_player() == 'n':
-        with st.container(border=True):
-            with st.container(border=True):
-                st.write('North Player Cradle')
-                st.write('  ' + big_font_prefix + str(st.session_state['game_board'].game_state_list[0]) + big_font_suffix, unsafe_allow_html=True)
-    else:
+    with st.container(border=is_north_player_move):
         with st.container(border=True):
             st.write('North Player Cradle')
             st.write('  ' + big_font_prefix + str(st.session_state['game_board'].game_state_list[0]) + big_font_suffix, unsafe_allow_html=True)
@@ -147,15 +143,8 @@ with last_col:
     st.write('')
     st.write('')
     st.write('')
-    st.write('')
     st.write('<div class="selected-player">', unsafe_allow_html=True)
-    if st.session_state['game_board'].next_player() == 's':
-        with st.container(border=True):
-            with st.container(border=True):
-                st.write('South Player Cradle')
-                st.write('  ' + big_font_prefix + str(st.session_state['game_board'].game_state_list[7]) + big_font_suffix, unsafe_allow_html=True)
-            st.write('</div>', unsafe_allow_html=True)
-    else:
+    with st.container(border=is_south_player_move):
         with st.container(border=True):
             st.write('South Player Cradle')
             st.write('  ' + big_font_prefix + str(st.session_state['game_board'].game_state_list[7]) + big_font_suffix, unsafe_allow_html=True)
