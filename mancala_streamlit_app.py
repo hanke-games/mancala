@@ -29,6 +29,10 @@ st.markdown("""
         color: black;
     }
 
+    .stButton button:onmouseup {
+        color: black;
+    }
+
 </style>
 """, unsafe_allow_html=True)
 
