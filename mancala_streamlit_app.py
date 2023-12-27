@@ -28,7 +28,7 @@ with first_col:
 with last_col:
     st.write('Last')
 
-for i, col in enumerate(col_list[1, -1]):
+for i, col in enumerate(col_list[1:-1]):
     with col:
         st.write('A')
         st.write('')
