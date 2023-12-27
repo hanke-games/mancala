@@ -34,9 +34,9 @@ with last_col:
 
 for i, col in enumerate(col_list[1:-1]):
     with col:
-        st.write(str(st.session_state['game_board'].game_state_list[14-i]))
+        st.write(str(st.session_state['game_board'].game_state_list[14-(i+1)]))
         st.write('')
-        st.write(str(st.session_state['game_board'].game_state_list[i]))
+        st.write(str(st.session_state['game_board'].game_state_list[i+1]))
 
 
 ## Get the next move
