@@ -64,18 +64,18 @@ first_col = col_list[0]
 last_col = col_list[-1]
 
 with first_col:
+    st.write('')
+    st.write('')
+    st.write('')
     with st.container(border=True):
-        st.write('')
-        st.write('')
-        st.write('')
         st.write('North Player Cradle')
         st.write('  ' + str(st.session_state['game_board'].game_state_list[0]))
 
 with last_col:
+    st.write('')
+    st.write('')
+    st.write('')
     with st.container(border=True):
-        st.write('')
-        st.write('')
-        st.write('')
         st.write('South Player Cradle')
         st.write('  ' + str(st.session_state['game_board'].game_state_list[7]))
 
