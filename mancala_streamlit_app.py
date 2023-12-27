@@ -23,11 +23,11 @@ first_col = col_list[0]
 last_col = col_list[-1]
 
 with first_col:
-    st.write()
+    st.write('')
     st.write('First')
 
 with last_col:
-    st.write()
+    st.write('')
     st.write('Last')
 
 for i, col in enumerate(col_list[1:-1]):
