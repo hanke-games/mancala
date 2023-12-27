@@ -53,12 +53,24 @@ st.markdown("""
     border: 20px blue;
     padding: 10px;
 }
+
 </style>
 """, unsafe_allow_html=True)
 
 
 big_font_prefix = '<p class="big-font">' 
 big_font_suffix = '</p>'
+
+
+
+
+st.markdown("""
+<style>
+    [data-testid="stSidebar"] + section [data-testid="stVerticalBlock"] div:nth-of-type({2})
+    [data-testid="stVerticalBlock"] {{background-color:rgba(175,238,238,.2)}}
+</style>
+""", unsafe_allow_html=True)
+
 
 
 
