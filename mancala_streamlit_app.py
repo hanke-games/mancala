@@ -13,7 +13,7 @@ st.set_page_config(layout="wide")
 st.markdown("""
 <style>
     .stButton button {
-        background-color: white;
+        background-color: grey;
         font-weight: bold;
         color: black;
         width: 50px;
@@ -73,11 +73,11 @@ if 'game_board' not in st.session_state:
     st.session_state['game_board'] = Kalah(m=6, n=4)
 
 ## Define the move input box instance
-if 'text_input' not in st.session_state:
-    st.session_state['move_input'] = st.number_input("Enter your move ('Q' to quit): ", 
-                                                    value=None, 
-                                                    min_value=1, max_value = 13,
-                                                    on_change=attempt_new_move)
+#if 'text_input' not in st.session_state:
+#    st.session_state['move_input'] = st.number_input("Enter your move ('Q' to quit): ", 
+#                                                    value=None, 
+#                                                    min_value=1, max_value = 13,
+#                                                    on_change=attempt_new_move)
 
 
 
