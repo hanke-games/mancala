@@ -43,6 +43,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+
+
 st.markdown("""
 <style>
 .big-font {
@@ -63,11 +65,10 @@ big_font_suffix = '</p>'
 
 
 
-
+## REFERENCE: https://discuss.streamlit.io/t/custom-background-color-of-selectbox-elements/22200/2
 st.markdown("""
 <style>
-    [data-testid="stSidebar"] + section [data-testid="stVerticalBlock"] div:nth-of-type({2})
-    [data-testid="stVerticalBlock"] {{background-color:rgba(175,238,238,.2)}}
+    [data-testid="stVerticalBlock"] div:nth-of-type({2}) {{background-color:rgba(175,238,238,.2)}}
 </style>
 """, unsafe_allow_html=True)
 
