@@ -129,11 +129,11 @@ with last_col:
     st.write('')
     st.write('')
     st.write('')
-    st.write('<p class="selected-player">', unsafe_allow_html=True)
+    st.write('<div class="selected-player">', unsafe_allow_html=True)
     with st.container(border=True):
         st.write('South Player Cradle')
         st.write('  ' + big_font_prefix + str(st.session_state['game_board'].game_state_list[7]) + big_font_suffix, unsafe_allow_html=True)
-    st.write('</p>', unsafe_allow_html=True)
+    st.write('</div>', unsafe_allow_html=True)
 
 for i, col in enumerate(col_list[1:-1]):
     with col:
