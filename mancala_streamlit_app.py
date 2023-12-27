@@ -67,11 +67,15 @@ with first_col:
     st.write('')
     st.write('')
     st.write('')
+    st.write('')
+    st.write('')
     with st.container(border=True):
         st.write('North Player Cradle')
         st.write('  ' + str(st.session_state['game_board'].game_state_list[0]))
 
 with last_col:
+    st.write('')
+    st.write('')
     st.write('')
     st.write('')
     st.write('')
