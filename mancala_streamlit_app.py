@@ -25,7 +25,7 @@ st.markdown("""
         color: black;
     }
 
-    .stButton button:click {
+    .stButton button:onclick {
         color: black;
     }
 
