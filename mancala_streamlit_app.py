@@ -49,7 +49,7 @@ if 'text_input' not in st.session_state:
 st.title('Mancala')
 
 ## Show the game board
-st.write(st.session_state['game_board'].__repr__())
+#st.write(st.session_state['game_board'].__repr__())
 
 
 ## Add a cleaner board display
@@ -80,11 +80,11 @@ for i, col in enumerate(col_list[1:-1]):
             st.rerun()
 
         ## Write the north and south player stone counts
-        st.write(str(st.session_state['game_board'].game_state_list[north_index]))
+        st.write(' ' + str(st.session_state['game_board'].game_state_list[north_index]))
         st.write('')
         st.write('')
         st.write('')
-        st.write(str(st.session_state['game_board'].game_state_list[south_index]))
+        st.write(' ' + str(st.session_state['game_board'].game_state_list[south_index]))
 
         ## Set up the south player move buttons
         if st.button(str(south_index)):
