@@ -7,11 +7,14 @@ class Kalah():
     Here, by convention, the South player ("S") always goes first.
     """
 
-    def __init__(self, m, n, initial_move_list=[]):
+    def __init__(self, m, n, initial_move_list=[], end_game_when_one_side_empty=True):
         """
         Initialize the Kalah game with m holes on each side, and n stones in each.  
     
         Here, by convention, the South player ("S") always goes first.
+
+        If end_game_when_one_side_empty is True, then the game ends when one side is empty 
+        and the remaining stones on the other side are given to the other player.
 
         NOTE: All moves in the initial move list are applied to the game state in order, 
         but only valid moves will be executed.  (Invalid moves will be ignored.)
@@ -23,6 +26,9 @@ class Kalah():
         
         ## Store the board size
         self.board_size = 2*m + 2
+
+        ## Store the game rules
+        self.end_game_when_one_side_empty = end_game_when_one_side_empty
 
 
         ## Initialize the game history 
@@ -338,6 +344,24 @@ class Kalah():
                 self.game_state_list[player_cradle_position] += extra
 
 
+            ## If this rule is set, end the game if the player's side has been cleared
+            if self.end_game_when_one_side_empty:
+                if (self.number_of_remaining_north_pieces() == 0):
+                    ## Move the pieces from each side to that player's cradle -- (only one side will have stones)
+                    self.move_player_side_stones_to_the_player_cradle_for_player('s')
+
+                    ## End the game
+                    self.game_state_list[-1] = 'x'
+
+                if (self.number_of_remaining_south_pieces() == 0):
+                    ## Move the pieces from each side to that player's cradle -- (only one side will have stones)
+                    self.move_player_side_stones_to_the_player_cradle_for_player('n')
+
+                    ## End the game
+                    self.game_state_list[-1] = 'x'
+
+
+
             ## Change the player if they didn't finish in their cradle
             if position != player_cradle_position:
                 self.switch_player()            
@@ -346,10 +370,61 @@ class Kalah():
             ## Check if there are any allowed moves
             if self.number_of_remaining_pieces() == 0:
                 self.game_state_list[-1] = 'x'
+
             else:
                 ## Check if there are any allowed moves for the current player
                 if self.allowed_move_list() == []:
                     self.switch_player()
-                    
 
-        
+
+
+    def move_player_side_stones_to_the_player_cradle_for_player(self, player_str):
+        """
+        Move all of the stones from the given player's side to the given player's cradle.
+        """
+        ## Get the player's hole and cradle positions
+        player_hole_positions_list = self.hole_positions_list_for_player(player_str)
+        player_cradle_position = self.cradle_position_for_player(player_str)
+
+        ## Add the player's stones to the player's cradle
+        num_of_player_stones = sum([self.game_state_list[hole]  for hole in player_hole_positions_list])
+        self.game_state_list[player_cradle_position] += num_of_player_stones
+
+        ## Clear the player's stones
+        for hole in player_hole_positions_list:
+            self.game_state_list[hole] = 0
+
+
+
+    def hole_positions_list_for_player(self, player_str):
+        """
+        Returns the (ordered) list of the player's hole positions.
+        """
+        ## Construct the list of the player's hole positions
+        if player_str == 'n':
+            player_hole_positions_list = [x for x in range(self.m + 2, self.board_size)]
+        elif player_str =='s':
+            player_hole_positions_list = [x for x in range(1, self.m + 1)]
+        else:
+            raise RuntimeError(f"The player to move '{player_str}' is not one of the allowed values ('n' or 's').")
+
+        ## Return the desired list
+        return player_hole_positions_list
+
+
+    def cradle_position_for_player(self, player_str):
+        """
+        Returns the position of the player's cradle.
+        """
+        ## Construct the list of the player's cradle position
+        if player_str == 'n':
+            player_cradle_position = 0
+        elif player_str =='s':
+            player_cradle_position = self.m + 1
+        else:
+            raise RuntimeError(f"The player to move '{player_str}' is not one of the allowed values ('n' or 's').")
+
+        ## Return the desired position
+        return player_cradle_position
+
+
