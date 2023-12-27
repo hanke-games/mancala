@@ -72,8 +72,13 @@ for i, col in enumerate(col_list[1:-1]):
         st.button(str(14-(i+1)))
         st.write(str(st.session_state['game_board'].game_state_list[14-(i+1)]))
         st.write('')
+        st.write('')
+        st.write('')
         st.write(str(st.session_state['game_board'].game_state_list[i+1]))
-        st.button(str(i+1))
+        if st.button(str(i+1)):
+            st.session_state['game_board'].perform_move(i+1)
+#            st.session_state['move_input'] = i+1
+            st.rerun()
 
 
 
