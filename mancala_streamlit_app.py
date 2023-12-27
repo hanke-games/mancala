@@ -86,7 +86,7 @@ for i, col in enumerate(col_list[1:-1]):
         st.write('')
         st.write('')
         with st.container(border=True):
-            st.write(str(st.session_state['game_board'].game_state_list[south_index]).center(7))
+            st.write(str(st.session_state['game_board'].game_state_list[south_index]).center(4))
 
         ## Set up the south player move buttons
         if st.button(str(south_index)):
