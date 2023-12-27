@@ -25,6 +25,10 @@ st.markdown("""
         color: black;
     }
 
+    .stButton button:click {
+        color: black;
+    }
+
 </style>
 """, unsafe_allow_html=True)
 
