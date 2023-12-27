@@ -8,14 +8,14 @@ from mancala import *
 
 def attempt_new_move():
     ## Get the next move
-    move = st.session_state['text_input']
+    move_num = st.session_state['move_input']
 
     ## Clear the move text
-    st.session_state['text_input'].value = ''
+    st.session_state['move_input'].value = None
 
     ## Apply the move
     try:
-        st.session_state['game_board'].perform_move(int(move))
+        st.session_state['game_board'].perform_move(move_num)
         st.rerun()
     except:
         pass
@@ -32,7 +32,10 @@ if 'game_board' not in st.session_state:
 
 ## Define the move input box instance
 if 'text_input' not in st.session_state:
-    st.session_state['text_input'] = st.text_input("Enter your move ('Q' to quit): ", value='', on_change=attempt_new_move)
+    st.session_state['move_input'] = st.number_input("Enter your move ('Q' to quit): ", 
+                                                    value=None, 
+                                                    min_value=1, max_value = 13,
+                                                    on_change=attempt_new_move)
 
 
 
