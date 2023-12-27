@@ -24,17 +24,19 @@ last_col = col_list[-1]
 
 with first_col:
     st.write('')
-    st.write('First')
+    st.write('North Player Cradle')
+    st.write(str(st.session_state['game_board'].game_state_list[0]))
 
 with last_col:
     st.write('')
-    st.write('Last')
+    st.write('South Player Cradle')
+    st.write(str(st.session_state['game_board'].game_state_list[7]))
 
 for i, col in enumerate(col_list[1:-1]):
     with col:
-        st.write('A')
+        st.write(str(st.session_state['game_board'].game_state_list[14-i]))
         st.write('')
-        st.write('B')
+        st.write(str(st.session_state['game_board'].game_state_list[i]))
 
 
 ## Get the next move
