@@ -15,8 +15,9 @@ st.markdown("""
     .stButton button {
         background-color: white;
         font-weight: bold;
+        color: black;
         width: 50px;
-        border: 2px solid green;
+        border: 2px blue;
     }
 
     .stButton button:hover {
@@ -110,7 +111,7 @@ with last_col:
     st.write('')
     with st.container(border=True):
         st.write('South Player Cradle')
-        st.write('  ' + str(st.session_state['game_board'].game_state_list[7]))
+        st.write('  ' + big_font_prefix + str(st.session_state['game_board'].game_state_list[7]) + big_font_suffix, unsafe_allow_html=True)
 
 for i, col in enumerate(col_list[1:-1]):
     with col:
