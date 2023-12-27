@@ -4,6 +4,28 @@ import numpy as np
 
 from mancala import *
 
+
+
+def attempt_new_move():
+    ## Get the next move
+    move = st.session_state['text_input']
+
+    ## Clear the move text
+    st.session_state['text_input'].value = ''
+
+    ## Apply the move
+    try:
+        st.session_state['game_board'].perform_move(int(move))
+        st.rerun()
+    except:
+        pass
+
+
+
+
+
+
+
 ## Define the game board instance
 if 'game_board' not in st.session_state:
     st.session_state['game_board'] = Kalah(m=6, n=4)
@@ -48,21 +70,5 @@ for i, col in enumerate(col_list[1:-1]):
 st.write("Game History:")
 st.write(st.session_state['game_board'].history_list())
 
-
-
-
-def attempt_new_move():
-    ## Get the next move
-    move = st.session_state['text_input']
-
-    ## Clear the move text
-    st.session_state['text_input'].value = ''
-
-    ## Apply the move
-    try:
-        st.session_state['game_board'].perform_move(int(move))
-        st.rerun()
-    except:
-        pass
 
 
