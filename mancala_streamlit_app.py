@@ -5,7 +5,8 @@ import numpy as np
 from mancala import *
 
 ## Define the game board instance
-game = Kalah(m=6, n=4)
+if 'game_board' not in st.session_state:
+    st.session_state['game_board'] = Kalah(m=6, n=4)
 
 
 
@@ -13,19 +14,20 @@ game = Kalah(m=6, n=4)
 st.title('Mancala')
 
 ## Show the game board
-st.write(game.__repr__())
-
+st.write(st.session_state['game_board'].__repr__())
 
 
 ## Get the next move
 move = st.text_input("Enter your move ('Q' to quit): ")
 
 ## Apply the move
-game.perform_move(int(move))
-
+try:
+    st.session_state['game_board'].perform_move(int(move))
+except:
+    pass
 
 ## Show the game history
 st.write("Game History:")
-st.write(game.history_list())
+st.write(st.session_state['game_board'].history_list())
 
 
