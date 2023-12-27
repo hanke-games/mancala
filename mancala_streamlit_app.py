@@ -133,6 +133,7 @@ with first_col:
     st.write('')
     st.write('')
     st.write('')
+    st.write('')
     if not is_north_player_move:
         st.write('')
     with st.container(border=is_north_player_move):
@@ -145,14 +146,15 @@ with last_col:
     st.write('')
     st.write('')
     st.write('')
-    st.write('<div class="selected-player">', unsafe_allow_html=True)
+    st.write('')
+#    st.write('<div class="selected-player">', unsafe_allow_html=True)
     if not is_south_player_move:
         st.write('')
     with st.container(border=is_south_player_move):
         with st.container(border=True):
             st.write('South Player Cradle')
             st.write('  ' + big_font_prefix + str(st.session_state['game_board'].game_state_list[7]) + big_font_suffix, unsafe_allow_html=True)
-        st.write('</div>', unsafe_allow_html=True)
+#        st.write('</div>', unsafe_allow_html=True)
 
 
 for i, col in enumerate(col_list[1:-1]):
