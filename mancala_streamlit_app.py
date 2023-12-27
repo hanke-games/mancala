@@ -21,7 +21,7 @@ st.markdown("""
     }
 
     .stButton button:hover {
-        background-color:#018749;
+        background-color: blue;
         color: black;
     }
 
