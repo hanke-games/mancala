@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-#from .mancala import Kalah
+from .mancala import Kalah
 
 ## Define the game board instance
 #game = Kalah()
