@@ -132,7 +132,7 @@ with first_col:
     st.write('')
     st.write('')
     st.write('')
-    if st.session_state['game_board'].current_player_str() == 'n':
+    if st.session_state['game_board'].next_player() == 'n':
         with st.container(border=True):
             with st.container(border=True):
                 st.write('North Player Cradle')
@@ -149,7 +149,7 @@ with last_col:
     st.write('')
     st.write('')
     st.write('<div class="selected-player">', unsafe_allow_html=True)
-    if st.session_state['game_board'].current_player_str() == 's':
+    if st.session_state['game_board'].next_player() == 's':
         with st.container(border=True):
             with st.container(border=True):
                 st.write('South Player Cradle')
