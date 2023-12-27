@@ -8,6 +8,10 @@ from mancala import *
 if 'game_board' not in st.session_state:
     st.session_state['game_board'] = Kalah(m=6, n=4)
 
+## Define the move input box instance
+if 'text_input' not in st.session_state:
+    st.session_state['text_input'] = st.text_input("Enter your move ('Q' to quit): ", value='', on_change=attempt_new_move)
+
 
 
 ## Create the app title
@@ -39,18 +43,26 @@ for i, col in enumerate(col_list[1:-1]):
         st.write(str(st.session_state['game_board'].game_state_list[i+1]))
 
 
-## Get the next move
-move = st.text_input("Enter your move ('Q' to quit): ", value='')
-
-## Apply the move
-try:
-    st.session_state['game_board'].perform_move(int(move))
-    st.rerun()
-except:
-    pass
 
 ## Show the game history
 st.write("Game History:")
 st.write(st.session_state['game_board'].history_list())
+
+
+
+
+def attempt_new_move():
+    ## Get the next move
+    move = st.session_state['text_input']
+
+    ## Clear the move text
+    st.session_state['text_input'].value = ''
+
+    ## Apply the move
+    try:
+        st.session_state['game_board'].perform_move(int(move))
+        st.rerun()
+    except:
+        pass
 
 
