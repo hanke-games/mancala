@@ -5,6 +5,12 @@ import numpy as np
 from mancala import *
 
 
+## Configure the streamlit page
+st.set_page_config(layout="wide")
+
+
+
+
 
 def attempt_new_move():
     ## Get the next move
