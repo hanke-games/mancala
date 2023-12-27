@@ -68,7 +68,7 @@ big_font_suffix = '</p>'
 ## REFERENCE: https://discuss.streamlit.io/t/custom-background-color-of-selectbox-elements/22200/2
 st.markdown("""
 <style>
-    section [data-testid="stVerticalBlock"] div:nth-of-type({2}) {{background-color:rgba(175,238,238,.2)}}
+    section [data-testid="stVerticalBlock"] div:nth-of-type({1}) {{background-color:rgba(175,238,238,.2)}}
 </style>
 """, unsafe_allow_html=True)
 
